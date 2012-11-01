@@ -22,8 +22,10 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lib/pipedrive-ruby.rb",
     "lib/pipedrive/base.rb",
     "lib/pipedrive/deal.rb",
+    "pipedrive-ruby.gemspec",
     "test/helper.rb",
     "test/test_pipedrive-rails.rb"
   ]
