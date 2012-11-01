@@ -4,7 +4,8 @@ module Pipedrive
 
     def self.create( opts = {} )
       res = post "/deals", :body => opts
-      if res.ok?
+      if res.success?
+        res['data'] = opts.merge res['data']
         Deal.new(res)
       else
         bad_response(res)
