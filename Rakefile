@@ -18,7 +18,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "https://github.com/GeneralScripting/pipedrive-ruby.git"
   gem.license = "MIT"
   gem.summary = %Q{Ruby wrapper for the Pipedrive API}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{Ruby wrapper for the Pipedrive API}
   gem.email = "jan@general-scripting.com"
   gem.authors = ["Waldemar Kusnezow", "Jan Schwenzien", "Patrick Kozma"]
   # dependencies defined in Gemfile
