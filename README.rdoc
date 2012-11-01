@@ -1,16 +1,16 @@
-= pipedrive-rails
+= pipedrive-ruby
 
 == Installation
 
-    gem install pipedrive-rails
+    gem install pipedrive-ruby
 
 == Usage
 
-    require 'pipedrive-rails'
+    require 'pipedrive-ruby'
     Pipedrive.authenticate( YOUR_API_TOKEN )
     Pipedrive::Deal.find( DEAL_ID )
 
-== Contributing to pipedrive-rails
+== Contributing to pipedrive-ruby
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.

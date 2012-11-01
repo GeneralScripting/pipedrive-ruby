@@ -14,13 +14,13 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "pipedrive-rails"
-  gem.homepage = "http://github.com/kusnezow-waldemar/pipedrive-rails"
+  gem.name = "pipedrive-ruby"
+  gem.homepage = "https://github.com/GeneralScripting/pipedrive-ruby.git"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
+  gem.summary = %Q{Ruby wrapper for the Pipedrive API}
   gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "waldemar.kusnezow@arcor.de"
-  gem.authors = ["Waldemar Kusnezow"]
+  gem.email = "jan@general-scripting.com"
+  gem.authors = ["Waldemar Kusnezow", "Jan Schwenzien", "Patrick Kozma"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
