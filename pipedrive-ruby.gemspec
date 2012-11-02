@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pipedrive-ruby"
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Waldemar Kusnezow", "Jan Schwenzien", "Patrick Kozma"]
-  s.date = "2012-11-01"
+  s.date = "2012-11-02"
   s.description = "Ruby wrapper for the Pipedrive API"
   s.email = "jan@general-scripting.com"
   s.extra_rdoc_files = [
@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
     "lib/pipedrive-ruby.rb",
     "lib/pipedrive/base.rb",
     "lib/pipedrive/deal.rb",
+    "lib/pipedrive/organization.rb",
+    "lib/pipedrive/person.rb",
     "pipedrive-ruby.gemspec",
     "test/helper.rb",
     "test/test_pipedrive-rails.rb"
