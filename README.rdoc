@@ -10,6 +10,17 @@
     Pipedrive.authenticate( YOUR_API_TOKEN )
     Pipedrive::Deal.find( DEAL_ID )
 
+== API Calls
+    Pipedrive::Deal.create( params )
+    Pipedrive::Deal.find( <ID> )
+
+    Pipedrive::Organization.create( params )
+    Pipedrive::Organization.find( <ID> )
+
+    Pipdrive::Person.create( params )
+    Pipdrive::Person.find( <ID >)
+
+
 == Contributing to pipedrive-ruby
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.

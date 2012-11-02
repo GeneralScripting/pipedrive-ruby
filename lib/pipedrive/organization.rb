@@ -3,7 +3,7 @@ module Pipedrive
   class Organization < Base
 
     def self.create( opts = {} )
-      res = post "/organization", :body => opts
+      res = post "/organizations", :body => opts
       if res.success?
         res['data'] = opts.merge res['data']
         Organization.new(res)
@@ -13,7 +13,7 @@ module Pipedrive
     end
 
     def self.find(id)
-      res = get "/organization/#{id}"
+      res = get "/organizations/#{id}"
       if res.ok?
         Organization.new(res)
       else

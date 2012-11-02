@@ -1,5 +1,7 @@
 require 'pipedrive/base'
 require 'pipedrive/deal'
+require 'pipedrive/organization'
+require 'pipedrive/person'
 
 module Pipedrive
 
