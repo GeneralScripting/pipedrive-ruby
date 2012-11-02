@@ -21,6 +21,15 @@ module Pipedrive
       end
     end
 
+    def self.find_by_name(opts = {})
+      res = get "/persons/find", :query => opts
+      if res.ok?
+        Person.new(res)
+      else
+        bad_response(res)
+      end
+    end
+
   end
 
 end

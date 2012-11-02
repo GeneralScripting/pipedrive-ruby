@@ -47,7 +47,7 @@ module Pipedrive
     # @param [Hash] attributes
     # @return [CloudApp::Base]
     def initialize(attrs = {})
-      super( attrs['data'].is_a?(Hash) ? attrs['data'] : attrs['data'].first )
+      super( attrs['data'].is_a?(Hash) ? attrs['data'] : (attrs['data'].first unless attrs['data'].nil?) )
     end
     
   end  

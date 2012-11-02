@@ -21,8 +21,8 @@ module Pipedrive
       end
     end
 
-    def self.find_by_name(name)
-      res = get "/organizations/find?term=#{name}"
+    def self.find_by_name(opts = {})
+      res = get "/organizations/find", :query => opts
       if res.ok?
         Organization.new(res)
       else
