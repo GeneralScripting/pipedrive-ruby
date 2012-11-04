@@ -21,10 +21,10 @@ module Pipedrive
       end
     end
 
-    def self.find_by_name(opts = {})
-      res = get "/persons/find", :query => opts
+    def self.find_by_name(name, opts={})
+      res = get "/persons/find", :query => { :term => name }.merge(opts)
       if res.ok?
-        Person.new(res)
+        Person.new_list(res)
       else
         bad_response(res)
       end

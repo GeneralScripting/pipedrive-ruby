@@ -32,14 +32,17 @@ module Pipedrive
     # @param [HTTParty::Response] response
     def self.bad_response(response)
       if response.class == HTTParty::Response
-        raise response.inspect
         raise ResponseError, response
       end
       raise StandardError, "Unkown error"
     end
-    
+
+    def self.new_list( attrs )
+      attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
+    end
+
     attr_reader :data
-    
+
     # Create a new CloudApp::Base object.
     #
     # Only used internally
@@ -47,7 +50,7 @@ module Pipedrive
     # @param [Hash] attributes
     # @return [CloudApp::Base]
     def initialize(attrs = {})
-      super( attrs['data'].is_a?(Hash) ? attrs['data'] : (attrs['data'].first unless attrs['data'].nil?) )
+      super( attrs['data'] )
     end
     
   end  
