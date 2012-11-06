@@ -12,6 +12,10 @@ module Pipedrive
       end
     end
 
+    def self.find_or_create_by_name( name, opts={} )
+      find_by_name( name ).first || create( opts.merge( :title => name ) )
+    end
+
     def self.find(id)
       res = get "/organizations/#{id}"
       if res.ok?
