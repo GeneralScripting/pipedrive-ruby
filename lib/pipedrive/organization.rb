@@ -2,6 +2,15 @@ module Pipedrive
 
   class Organization < Base
 
+    def self.all
+      res = get "/organizations"
+      if res.ok?
+        res['data'].map{|org| Organization.new(org)}
+      else
+        bad_response(res)
+      end
+    end
+
     def self.create( opts = {} )
       res = post "/organizations", :body => opts
       if res.success?

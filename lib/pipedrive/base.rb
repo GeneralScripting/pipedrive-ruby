@@ -50,7 +50,11 @@ module Pipedrive
     # @param [Hash] attributes
     # @return [CloudApp::Base]
     def initialize(attrs = {})
-      super( attrs['data'] )
+      if attrs['data']
+        super( attrs['data'] )
+      else
+        super(attrs)
+      end
     end
     
   end  
