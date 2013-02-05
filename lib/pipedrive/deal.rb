@@ -5,7 +5,11 @@ module Pipedrive
     def self.all
       res = get "/deals"
       if res.ok?
-        res['data'].map{|deal| Deal.new(deal)}
+        if !res['data'].nil?
+          res['data'].map{|deal| Deal.new(deal)}
+        else
+          []
+        end
       else
         bad_response(res)
       end

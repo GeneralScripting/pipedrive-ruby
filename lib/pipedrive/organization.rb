@@ -5,7 +5,11 @@ module Pipedrive
     def self.all
       res = get "/organizations"
       if res.ok?
-        res['data'].map{|org| Organization.new(org)}
+        if !res['data'].nil?
+          res['data'].map{|org| Organization.new(org)}
+        else
+          []
+        end
       else
         bad_response(res)
       end
