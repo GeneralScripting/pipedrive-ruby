@@ -1,5 +1,6 @@
 module Pipedrive
   class Organization < Base
+    include Deals
 
     class << self
 

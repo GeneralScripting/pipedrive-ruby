@@ -95,7 +95,13 @@ module Pipedrive
         "/#{name.split('::').last.downcase}s"
       end
     end
-    
+
+    # TODO Rewrite this.
+    module Deals
+      def deals
+        Deal.all(get "#{resource_path}/#{id}/deals")
+      end
+    end
   end  
   
 end
