@@ -1,5 +1,6 @@
 require 'httparty'
 require 'ostruct'
+require 'forwardable'
 
 module Pipedrive
   
@@ -12,11 +13,14 @@ module Pipedrive
   
   # Base class for setting HTTParty configurations globally
   class Base < OpenStruct
-    
+
     include HTTParty
     base_uri 'api.pipedrive.com/v1'
     headers HEADERS
     format :json
+
+    extend Forwardable
+    def_delegators 'self.class', :get, :resource_path
 
     attr_reader :data
 
@@ -44,22 +48,22 @@ module Pipedrive
         default_params :api_token => token
       end
 
-      # Examines a bad response and raises an approriate exception
+      # Examines a bad response and raises an appropriate exception
       #
       # @param [HTTParty::Response] response
       def bad_response(response)
         if response.class == HTTParty::Response
           raise HTTParty::ResponseError, response
         end
-        raise StandardError, 'Unkown error'
+        raise StandardError, 'Unknown error'
       end
 
       def new_list( attrs )
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
-      def all
-        res = get resource_path
+      def all(response = nil)
+        res = response || get(resource_path)
         if res.ok?
           res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
         else
@@ -87,10 +91,8 @@ module Pipedrive
         res.ok? ? new_list(res) : bad_response(res)
       end
 
-      private
-
       def resource_path
-        raise StandardError, 'Called subclassed resource_path method.'
+        "/#{name.split('::').last.downcase}s"
       end
     end
     

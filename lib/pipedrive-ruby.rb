@@ -2,6 +2,7 @@ require 'pipedrive/base'
 require 'pipedrive/deal'
 require 'pipedrive/organization'
 require 'pipedrive/person'
+require 'pipedrive/product'
 
 module Pipedrive
 

@@ -7,12 +7,6 @@ module Pipedrive
         find_by_name(name).first || create(opts.merge(:title => name))
       end
 
-      private
-
-      def resource_path
-        '/organizations'
-      end
-
     end
   end
 end
