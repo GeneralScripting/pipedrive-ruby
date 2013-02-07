@@ -3,14 +3,14 @@ require 'ostruct'
 require 'forwardable'
 
 module Pipedrive
-  
+
   # Globally set request headers
   HEADERS = {
     "User-Agent"    => "Ruby.Pipedrive.Api",
     "Accept"        => "application/json",
     "Content-Type"  => "application/x-www-form-urlencoded"
   }
-  
+
   # Base class for setting HTTParty configurations globally
   class Base < OpenStruct
 
@@ -20,7 +20,7 @@ module Pipedrive
     format :json
 
     extend Forwardable
-    def_delegators 'self.class', :get, :post, :resource_path, :bad_response
+    def_delegators 'self.class', :get, :post, :put, :resource_path, :bad_response
 
     attr_reader :data
 
@@ -36,6 +36,15 @@ module Pipedrive
       else
         super(attrs)
       end
+    end
+
+    # Updates the object.
+    #
+    # @param [Hash] opts
+    # @return [Boolean]
+    def update(opts = {})
+      res = put "#{resource_path}/#{id}", :body => opts
+      !!(res.success? && @table.merge!(res['data'].symbolize_keys))
     end
 
     class << self
@@ -102,6 +111,6 @@ module Pipedrive
         Deal.all(get "#{resource_path}/#{id}/deals")
       end
     end
-  end  
-  
+  end
+
 end
