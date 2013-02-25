@@ -1,0 +1,30 @@
+{
+    "success": true,
+    "data": {
+        "id": 7553,
+        "company_id": 72312,
+        "owner_id": 96701,
+        "name": "Dope.org",
+        "open_deals_count": 0,
+        "closed_deals_count": null,
+        "people_count": 0,
+        "activities_count": null,
+        "undone_activities_count": null,
+        "files_count": null,
+        "active_flag": true,
+        "category_id": null,
+        "country_code": null,
+        "temp_old_id": null,
+        "first_char": "d",
+        "permission_group_id": null,
+        "update_time": null,
+        "add_time": "2013-03-01 13:46:06",
+        "visible_to": "1",
+        "next_activity_date": null,
+        "next_activity_time": null,
+        "next_activity_id": null,
+        "last_activity_id": null,
+        "last_activity_date": null,
+        "edit_name": true
+    }
+}

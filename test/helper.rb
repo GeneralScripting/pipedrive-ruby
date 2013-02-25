@@ -9,10 +9,12 @@ rescue Bundler::BundlerError => e
 end
 require 'test/unit'
 require 'shoulda'
+# require 'mocha/setup'
+require 'webmock/test_unit'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'pipedrive-rails'
+require 'pipedrive-ruby'
 
 class Test::Unit::TestCase
 end

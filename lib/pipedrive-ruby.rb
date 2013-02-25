@@ -3,6 +3,8 @@ require 'pipedrive/deal'
 require 'pipedrive/organization'
 require 'pipedrive/person'
 require 'pipedrive/product'
+require 'pipedrive/pipeline'
+require 'pipedrive/stage'
 
 module Pipedrive
 
