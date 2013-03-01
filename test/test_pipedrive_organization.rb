@@ -8,7 +8,7 @@ class TestPipedriveOrganization < Test::Unit::TestCase
   should "execute a valid person request" do
     stub_request(:post, "http://api.pipedrive.com/v1/organizations?api_token=some-token").
       with(:body => {
-          "name"=>"Dope.org"
+          "name" => "Dope.org"
         },
         :headers => {
           'Accept'=>'application/json',
@@ -25,7 +25,8 @@ class TestPipedriveOrganization < Test::Unit::TestCase
           "content-length" => "3337",
           "connection" => "keep-alive",
           "access-control-allow-origin" => "*"
-        })
+        }
+      )
 
     organization = ::Pipedrive::Organization.create({
       name: "Dope.org"
