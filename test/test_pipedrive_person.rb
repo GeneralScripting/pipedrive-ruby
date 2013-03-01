@@ -6,13 +6,15 @@ class TestPipedrivePerson < Test::Unit::TestCase
   end
 
   should "execute a valid person request" do
+    body = {
+      "email"=>["john@dope.org"],
+      "name"=>"John Dope",
+      "org_id"=>"404",
+      "phone"=>["0123456789"]
+    }
+
     stub_request(:post, "http://api.pipedrive.com/v1/persons?api_token=some-token").
-      with(:body => {
-          "email"=>["john@dope.org"],
-          "name"=>"John Dope",
-          "org_id"=>"404",
-          "phone"=>["0123456789"]
-        }, :headers => {
+      with(:body => body, :headers => {
           'Accept'=>'application/json',
           'Content-Type'=>'application/x-www-form-urlencoded',
           'User-Agent'=>'Ruby.Pipedrive.Api'
@@ -27,14 +29,10 @@ class TestPipedrivePerson < Test::Unit::TestCase
           "content-length" => "1164",
           "connection" => "keep-alive",
           "access-control-allow-origin" => "*"
-        })
+        }
+      )
 
-    person = ::Pipedrive::Person.create({
-      name: "John Dope",
-      org_id: "404",
-      email: ["john@dope.org"],
-      phone: ["0123456789"]
-    })
+    person = ::Pipedrive::Person.create(body)
 
     assert_equal "John Dope", person.name
     assert_equal 404, person.org_id
