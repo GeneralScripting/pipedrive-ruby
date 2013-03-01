@@ -30,7 +30,13 @@ Gem::Specification.new do |s|
     "lib/pipedrive/product.rb",
     "pipedrive-ruby.gemspec",
     "test/helper.rb",
-    "test/test_pipedrive-rails.rb"
+    "test/test_pipedrive_authentication.rb",
+    "test/test_pipedrive_deal.rb",
+    "test/test_pipedrive_organization.rb",
+    "test/test_pipedrive_person.rb",
+    "test/data/create_deal_body.json",
+    "test/data/create_person_body.json",
+    "test/data/create_organization_body.json"
   ]
   s.homepage = "https://github.com/GeneralScripting/pipedrive-ruby.git"
   s.licenses = ["MIT"]
