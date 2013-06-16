@@ -17,8 +17,8 @@
     Pipedrive::Organization.create( params )
     Pipedrive::Organization.find( <ID> )
 
-    Pipdrive::Person.create( params )
-    Pipdrive::Person.find( <ID >)
+    Pipedrive::Person.create( params )
+    Pipedrive::Person.find( <ID >)
 
 
 == Contributing to pipedrive-ruby
