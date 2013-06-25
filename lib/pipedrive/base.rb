@@ -1,6 +1,7 @@
 require 'httparty'
 require 'ostruct'
 require 'forwardable'
+require 'active_support/inflector'
 
 module Pipedrive
 
@@ -61,6 +62,7 @@ module Pipedrive
       #
       # @param [HTTParty::Response] response
       def bad_response(response)
+        p response
         if response.class == HTTParty::Response
           raise HTTParty::ResponseError, response
         end
@@ -101,7 +103,8 @@ module Pipedrive
       end
 
       def resource_path
-        "/#{name.split('::').last.downcase}s"
+        klass = name.split('::').last
+        klass.eql?('Activity') ? '/activities' : "/#{klass.downcase}s"
       end
     end
 
