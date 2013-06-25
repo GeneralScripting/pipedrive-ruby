@@ -1,7 +1,6 @@
 require 'httparty'
 require 'ostruct'
 require 'forwardable'
-require 'active_support/inflector'
 
 module Pipedrive
 
