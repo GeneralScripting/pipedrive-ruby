@@ -14,6 +14,8 @@ module Pipedrive
   # Base class for setting HTTParty configurations globally
   class Base < OpenStruct
 
+    undef id
+
     include HTTParty
     base_uri 'api.pipedrive.com/v1'
     headers HEADERS
