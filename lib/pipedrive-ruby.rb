@@ -1,4 +1,5 @@
 require 'pipedrive/base'
+require 'pipedrive/activity'
 require 'pipedrive/deal'
 require 'pipedrive/organization'
 require 'pipedrive/person'
