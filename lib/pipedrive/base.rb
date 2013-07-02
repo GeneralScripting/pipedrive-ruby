@@ -101,7 +101,8 @@ module Pipedrive
       end
 
       def resource_path
-        "/#{name.split('::').last.downcase}s"
+        klass = name.split('::').last
+        klass.eql?('Activity') ? '/activities' : "/#{klass.downcase}s"
       end
     end
 
