@@ -13,13 +13,13 @@ Gem::Specification.new do |s|
   s.description = "Ruby wrapper for the Pipedrive API"
   s.email = "jan@general-scripting.com"
   s.extra_rdoc_files = [
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
     "Gemfile.lock",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "lib/pipedrive-ruby.rb",
