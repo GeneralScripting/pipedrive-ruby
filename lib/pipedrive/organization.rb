@@ -1,10 +1,12 @@
 module Pipedrive
   class Organization < Base
-    include Deals
 
-    # TODO Rewrite this.
     def persons
       Person.all(get "#{resource_path}/#{id}/persons")
+    end
+
+    def deals
+      Deal.all(get "#{resource_path}/#{id}/deals")
     end
 
     class << self
