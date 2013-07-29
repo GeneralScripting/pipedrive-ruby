@@ -1,4 +1,4 @@
 module Pipedrive
-  class Product < Base
+  class PersonField < Base
   end
 end
