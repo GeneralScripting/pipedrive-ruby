@@ -11,7 +11,7 @@ module Pipedrive
     end
 
     def remove_product product_attachment_id
-      res = delete "#{resource_path}/#{id}/products", { body: { product_attachment_id: product_attachment_id } }
+      res = delete "#{resource_path}/#{id}/products", { :body => { :product_attachment_id => product_attachment_id } }
       res.success? ? nil : bad_response(res)
     end
   end

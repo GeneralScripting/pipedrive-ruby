@@ -71,8 +71,8 @@ module Pipedrive
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
-      def all(response = nil)
-        res = response || get(resource_path)
+      def all(response = nil, options={})
+        res = response || get(resource_path, options)
         if res.ok?
           res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
         else
@@ -101,15 +101,11 @@ module Pipedrive
       end
 
       def resource_path
+        # The resource path should match the camelCased class name with the
+        # first letter downcased.  Pipedrive API is sensitive to capitalisation
         klass = name.split('::').last
-        klass.eql?('Activity') ? '/activities' : "/#{klass.downcase}s"
-      end
-    end
-
-    # TODO Rewrite this.
-    module Deals
-      def deals
-        Deal.all(get "#{resource_path}/#{id}/deals")
+        klass[0] = klass[0].chr.downcase
+        klass.end_with?('y') ? "/#{klass.chop}ies" : "/#{klass}s"
       end
     end
   end
