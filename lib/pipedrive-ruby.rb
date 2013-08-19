@@ -8,6 +8,7 @@ require 'pipedrive/person-field'
 require 'pipedrive/product'
 require 'pipedrive/pipeline'
 require 'pipedrive/stage'
+require 'pipedrive/note'
 
 module Pipedrive
 

@@ -24,6 +24,10 @@
     Pipedrive::Person.create( params )
     Pipedrive::Person.find( <ID >)
 
+    Pipedrive::Note.create( params )
+
+You can check some of the calls at https://developers.pipedrive.com/v1
+
 
 ## Contributing to pipedrive-ruby
  
