@@ -3,6 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/pipedrive-ruby.png)](http://badge.fury.io/rb/pipedrive-ruby)
 [![Code Climate](https://codeclimate.com/github/GeneralScripting/pipedrive-ruby.png)](https://codeclimate.com/github/GeneralScripting/pipedrive-ruby)
 [![Build Status](https://travis-ci.org/GeneralScripting/pipedrive-ruby.png?branch=master)](https://travis-ci.org/GeneralScripting/pipedrive-ruby)
+[![Coverage Status](https://coveralls.io/repos/GeneralScripting/pipedrive-ruby/badge.png?branch=master)](https://coveralls.io/r/GeneralScripting/pipedrive-ruby?branch=master)
 
 ## Installation
 
