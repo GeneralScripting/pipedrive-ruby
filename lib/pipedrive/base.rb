@@ -32,10 +32,16 @@ module Pipedrive
     # @return [CloudApp::Base]
     def initialize(attrs = {})
       if attrs['data']
-        super( attrs['data'] )
+        struct_attrs = attrs['data']
+
+        if attrs['additional_data']
+          struct_attrs.merge!(attrs['additional_data'])
+        end
       else
-        super(attrs)
+        struct_attrs = attrs
       end
+
+      super(struct_attrs)
     end
 
     # Updates the object.
