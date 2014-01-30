@@ -25,7 +25,9 @@ module Pipedrive
 
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})
       puts opts.merge(:deal_id => id)
-      Note.all(get("/notes", opts.merge(:deal_id => id)))
+      req = get("/notes", opts.merge(:deal_id => id))
+      puts req.inspect
+      Note.all(req)
     end
     
   end
