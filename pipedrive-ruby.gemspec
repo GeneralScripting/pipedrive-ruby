@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pipedrive-ruby"
-  s.version = "0.2.6"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Jan Schwenzien", "Waldemar Kusnezow"]
-  s.date = "2013-06-17"
+  s.authors = ["Jan Schwenzien", "Waldemar Kusnezow", "Joel Courtney"]
+  s.date = "2014-01-30"
   s.description = "Ruby wrapper for the Pipedrive API"
   s.email = "jan@general-scripting.com"
   s.extra_rdoc_files = [
@@ -24,12 +24,31 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/pipedrive-ruby.rb",
     "lib/pipedrive/base.rb",
+    "lib/pipedrive/activity.rb",
+    "lib/pipedrive/activity-type.rb",
+    "lib/pipedrive/authorization.rb",
+    "lib/pipedrive/currency.rb",
     "lib/pipedrive/deal.rb",
+    "lib/pipedrive/deal-field.rb",
+    "lib/pipedrive/file.rb",
+    "lib/pipedrive/filter.rb",
+    "lib/pipedrive/note.rb",
     "lib/pipedrive/organization.rb",
     "lib/pipedrive/person.rb",
+    "lib/pipedrive/organization-field.rb",
+    "lib/pipedrive/person-field.rb",
+    "lib/pipedrive/permission-set.rb",
     "lib/pipedrive/pipeline.rb",
     "lib/pipedrive/product.rb",
+    "lib/pipedrive/product-field.rb",
+    "lib/pipedrive/role.rb",
+    "lib/pipedrive/search-result.rb",
     "lib/pipedrive/stage.rb",
+    "lib/pipedrive/user.rb",
+    "lib/pipedrive/user-setting.rb",
+    "lib/pipedrive/goal.rb",
+    "lib/pipedrive/user-connection.rb",
+    "lib/pipedrive/push-notification.rb",
     "pipedrive-ruby.gemspec",
     "test/data/create_deal_body.json",
     "test/data/create_organization_body.json",

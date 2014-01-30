@@ -24,12 +24,12 @@ module Pipedrive
 
     attr_reader :data
 
-    # Create a new CloudApp::Base object.
+    # Create a new Pipedrive::Base object.
     #
     # Only used internally
     #
     # @param [Hash] attributes
-    # @return [CloudApp::Base]
+    # @return [Pipedrive::Base]
     def initialize(attrs = {})
       if attrs['data']
         struct_attrs = attrs['data']
@@ -95,7 +95,7 @@ module Pipedrive
           bad_response(res)
         end
       end
-
+      
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res)
