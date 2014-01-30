@@ -14,5 +14,14 @@ module Pipedrive
       res = delete "#{resource_path}/#{id}/products", { :body => { :product_attachment_id => product_attachment_id } }
       res.success? ? nil : bad_response(res)
     end
+
+    def activities
+      Activity.all(get "#{resource_path}/#{id}/activities")
+    end
+
+    def files
+      File.all(get "#{resource_path}/#{id}/files")
+    end
+
   end
 end
