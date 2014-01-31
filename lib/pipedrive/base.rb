@@ -50,8 +50,13 @@ module Pipedrive
     # @return [Boolean]
     def update(opts = {})
       res = put "#{resource_path}/#{id}", :body => opts
-      puts res.inspect
-      !!(res.success? && @table.merge!(res['data'].symbolize_keys))
+      if res.success? 
+        res['data'].each_key do |key|
+          self[key.to_sym] = res['data']['key']
+        end
+      else
+        bad_response(res)
+      end
     end
 
     class << self
