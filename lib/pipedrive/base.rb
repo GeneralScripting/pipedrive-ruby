@@ -56,7 +56,6 @@ module Pipedrive
       else
         false
       end
-      !!(res.success? && @table.merge!(res['data'].symbolize_keys))
     end
 
     class << self
