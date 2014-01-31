@@ -50,12 +50,13 @@ module Pipedrive
     # @return [Boolean]
     def update(opts = {})
       res = put "#{resource_path}/#{id}", :body => opts
-      if res.success? 
-        self.ostruct_update(res['data'])
-        true
+      if res.success?
+        res['data'] = Hash[res['data'].map {|k, v| [k.to_sym, v] }]
+        @table.merge!(res['data'])
       else
-        bad_response(res)
+        false
       end
+      !!(res.success? && @table.merge!(res['data'].symbolize_keys))
     end
 
     class << self
