@@ -51,9 +51,8 @@ module Pipedrive
     def update(opts = {})
       res = put "#{resource_path}/#{id}", :body => opts
       if res.success? 
-        res['data'].each_key do |key|
-          self[key.to_sym] = res['data']['key']
-        end
+        self.ostruct_update(res['data'])
+        true
       else
         bad_response(res)
       end
