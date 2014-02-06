@@ -71,9 +71,9 @@ module Pipedrive
       # Examines a bad response and raises an appropriate exception
       #
       # @param [HTTParty::Response] response
-      def bad_response(response)
+      def bad_response(response, params={})
         if response.class == HTTParty::Response
-          raise HTTParty::ResponseError, response
+          raise HTTParty::ResponseError, "#{response}\n params: #{params.inspect}"
         end
         raise StandardError, 'Unknown error'
       end
@@ -87,7 +87,7 @@ module Pipedrive
         if res.ok?
           res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
         else
-          bad_response(res)
+          bad_response(res,attrs)
         end
       end
 
@@ -97,18 +97,18 @@ module Pipedrive
           res['data'] = opts.merge res['data']
           new(res)
         else
-          bad_response(res)
+          bad_response(res,opts)
         end
       end
       
       def find(id)
         res = get "#{resource_path}/#{id}"
-        res.ok? ? new(res) : bad_response(res)
+        res.ok? ? new(res) : bad_response(res,id)
       end
 
       def find_by_name(name, opts={})
         res = get "#{resource_path}/find", :query => { :term => name }.merge(opts)
-        res.ok? ? new_list(res) : bad_response(res)
+        res.ok? ? new_list(res) : bad_response(res,{:name => name}.merge(opts))
       end
 
       def resource_path
