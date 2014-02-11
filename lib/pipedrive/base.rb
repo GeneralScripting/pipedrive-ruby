@@ -85,6 +85,7 @@ module Pipedrive
       end
 
       def all(response = nil, options={})
+        puts options
         res = response || get(resource_path, options)
         if res.ok?
           puts res
