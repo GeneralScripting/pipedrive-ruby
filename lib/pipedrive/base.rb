@@ -15,6 +15,8 @@ module Pipedrive
   class Base < OpenStruct
 
     include HTTParty
+    logger Logger.new(STDOUT), :info, :apache
+    
     base_uri 'api.pipedrive.com/v1'
     headers HEADERS
     format :json
