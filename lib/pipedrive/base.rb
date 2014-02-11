@@ -15,7 +15,6 @@ module Pipedrive
   class Base < OpenStruct
 
     include HTTParty
-    logger Logger.new(STDOUT), :info, :apache
     
     base_uri 'api.pipedrive.com/v1'
     headers HEADERS
@@ -88,6 +87,7 @@ module Pipedrive
       def all(response = nil, options={})
         res = response || get(resource_path, options)
         if res.ok?
+          puts res
           res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
         else
           bad_response(res,attrs)
