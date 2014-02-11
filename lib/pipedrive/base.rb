@@ -84,12 +84,15 @@ module Pipedrive
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
-      def all(response = nil, options={})
-        puts options
+      def all(response = nil, options={},get_absolutely_all=false)
         res = response || get(resource_path, options)
         if res.ok?
-          puts res
-          res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
+          data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
+          if get_absolutely_all && res['additional_data']['pagination'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
+            options[:query] = options[:query].merge({:next_start => res['additional_data']['pagination']['next_start']})
+            data += self.all(nil,options,true)
+          end
+          data
         else
           bad_response(res,attrs)
         end
