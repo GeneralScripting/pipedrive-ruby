@@ -18,7 +18,7 @@ module Pipedrive
         if res.ok?
           res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
         else
-          bad_response(res,{:term=>term,:field_type=>field_type,:field_key=>field_key},merge(opts))
+          bad_response(res,{:term=>term,:field_type=>field_type,:field_key=>field_key}.merge(opts))
         end
       end
     
