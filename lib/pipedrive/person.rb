@@ -8,5 +8,9 @@ module Pipedrive
       end
 
     end
+
+    def deals()
+      Deal.all(get "#{resource_path}/#{id}/deals", :everyone => 1)
+    end
   end
 end
