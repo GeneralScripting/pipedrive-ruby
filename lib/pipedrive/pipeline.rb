@@ -7,7 +7,7 @@ module Pipedrive
     def statistics(id, start_date, end_date)
       res = get("#{resource_path}/#{id}/movement_statistics",
                 :query => {:start_date => start_date, :end_date => end_date})
-      res.ok? ? new(res) : bad_response(res)
+      res.ok? ? new(res) : bad_response(res,{:id=>id,:start_date=>start_date,:end_date=>end_date})
     end
 
     def deals(id, stage_id)
