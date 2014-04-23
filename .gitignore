@@ -2,6 +2,8 @@
 coverage
 coverage.data
 
+/.ruby-*
+
 # rdoc generated
 rdoc
 

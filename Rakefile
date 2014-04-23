@@ -20,7 +20,7 @@ Jeweler::Tasks.new do |gem|
   gem.summary = %Q{Ruby wrapper for the Pipedrive API}
   gem.description = %Q{Ruby wrapper for the Pipedrive API}
   gem.email = "jan@general-scripting.com"
-  gem.authors = ["Jan Schwenzien", "Waldemar Kusnezow"]
+  gem.authors = ["Jan Schwenzien", "Waldemar Kusnezow", "Joel Courtney"]
   # dependencies defined in Gemfile
 end
 Jeweler::RubygemsDotOrgTasks.new
