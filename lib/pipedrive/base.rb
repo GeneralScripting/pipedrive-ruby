@@ -98,6 +98,10 @@ module Pipedrive
         end
       end
 
+      def absolutely_all(options = {})
+        self.all(nil, options, true)
+      end
+
       def create( opts = {} )
         res = post resource_path, :body => opts
         if res.success?
