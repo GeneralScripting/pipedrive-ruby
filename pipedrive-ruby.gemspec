@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jan Schwenzien", "Waldemar Kusnezow", "Joel Courtney"]
-  s.date = "2014-04-23"
+  s.date = "2014-07-08"
   s.description = "Ruby wrapper for the Pipedrive API"
   s.email = "jan@general-scripting.com"
   s.extra_rdoc_files = [
@@ -74,36 +74,36 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<httparty>, [">= 0"])
       s.add_runtime_dependency(%q<json>, [">= 1.7.7"])
       s.add_runtime_dependency(%q<multi_xml>, [">= 0.5.2"])
-      s.add_runtime_dependency(%q<webmock>, [">= 0"])
-      s.add_runtime_dependency(%q<coveralls>, [">= 0"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_development_dependency(%q<bundler>, [">= 1.0.0"])
       s.add_development_dependency(%q<jeweler>, [">= 1.8.4"])
       s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<webmock>, [">= 0"])
+      s.add_development_dependency(%q<coveralls>, [">= 0"])
     else
       s.add_dependency(%q<httparty>, [">= 0"])
       s.add_dependency(%q<json>, [">= 1.7.7"])
       s.add_dependency(%q<multi_xml>, [">= 0.5.2"])
-      s.add_dependency(%q<webmock>, [">= 0"])
-      s.add_dependency(%q<coveralls>, [">= 0"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
       s.add_dependency(%q<bundler>, [">= 1.0.0"])
       s.add_dependency(%q<jeweler>, [">= 1.8.4"])
       s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<webmock>, [">= 0"])
+      s.add_dependency(%q<coveralls>, [">= 0"])
     end
   else
     s.add_dependency(%q<httparty>, [">= 0"])
     s.add_dependency(%q<json>, [">= 1.7.7"])
     s.add_dependency(%q<multi_xml>, [">= 0.5.2"])
-    s.add_dependency(%q<webmock>, [">= 0"])
-    s.add_dependency(%q<coveralls>, [">= 0"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
     s.add_dependency(%q<bundler>, [">= 1.0.0"])
     s.add_dependency(%q<jeweler>, [">= 1.8.4"])
     s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<webmock>, [">= 0"])
+    s.add_dependency(%q<coveralls>, [">= 0"])
   end
 end
 
