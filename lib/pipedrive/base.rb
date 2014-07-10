@@ -107,6 +107,13 @@ module Pipedrive
           bad_response(res,opts)
         end
       end
+
+      def destroy(id)
+        res = delete "#{resource_path}/#{id}"
+        unless res.success?
+          bad_response(res, id)
+        end
+      end
       
       def find(id)
         res = get "#{resource_path}/#{id}"
