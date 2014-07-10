@@ -18,14 +18,18 @@
 ## API Calls
     Pipedrive::Deal.create( params )
     Pipedrive::Deal.find( <ID> )
+    Pipedrive::Deal.destroy( <ID> )
 
     Pipedrive::Organization.create( params )
     Pipedrive::Organization.find( <ID> )
+    Pipedrive::Organization.destroy( <ID> )
 
     Pipedrive::Person.create( params )
     Pipedrive::Person.find( <ID >)
+    Pipedrive::Person.destroy( <ID >)
 
     Pipedrive::Note.create( params )
+    Pipedrive::Note.destroy( <ID >)
 
 You can check some of the calls at https://developers.pipedrive.com/v1
 
