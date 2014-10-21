@@ -94,7 +94,7 @@ module Pipedrive
           end
           data
         else
-          bad_response(res,attrs)
+          bad_response(res,options)
         end
       end
 
