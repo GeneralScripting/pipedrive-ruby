@@ -11,9 +11,9 @@ class TestPipedriveOrganization < Test::Unit::TestCase
           "name" => "Dope.org"
         },
         :headers => {
-          'Accept'=>'application/json',
-          'Content-Type'=>'application/x-www-form-urlencoded',
-          'User-Agent'=>'Ruby.Pipedrive.Api'
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'User-Agent' => 'Ruby.Pipedrive.Api'
         }).
       to_return(
         :status => 200,

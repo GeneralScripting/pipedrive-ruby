@@ -16,9 +16,9 @@ class TestPipedriveDeal < Test::Unit::TestCase
     stub_request(:post, "http://api.pipedrive.com/v1/deals?api_token=some-token").
       with(:body => body,
         :headers => {
-          'Accept'=>'application/json',
-          'Content-Type'=>'application/x-www-form-urlencoded',
-          'User-Agent'=>'Ruby.Pipedrive.Api'
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'User-Agent' => 'Ruby.Pipedrive.Api'
         }).
       to_return(
         :status => 200,
