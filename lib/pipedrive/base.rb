@@ -80,7 +80,7 @@ module Pipedrive
         raise StandardError, 'Unknown error'
       end
 
-      def new_list( attrs )
+      def new_list(attrs)
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
@@ -94,7 +94,7 @@ module Pipedrive
           end
           data
         else
-          bad_response(res, attrs)
+          bad_response(res, options)
         end
       end
 
