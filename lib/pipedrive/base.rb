@@ -117,6 +117,11 @@ module Pipedrive
         res = get "#{resource_path}/find", :query => { :term => name }.merge(opts)
         res.ok? ? new_list(res) : bad_response(res,{:name => name}.merge(opts))
       end
+      
+      def destroy
+        res = delete "#{resource_path}/#{id}"
+        res.ok? ? res : bad_response(res, attrs)
+      end
 
       def resource_path
         # The resource path should match the camelCased class name with the
