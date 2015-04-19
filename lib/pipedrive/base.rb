@@ -88,7 +88,7 @@ module Pipedrive
         res = response || get(resource_path, options)
         if res.ok?
           data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
-          if get_absolutely_all && res['additional_data']['pagination'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
+          if get_absolutely_all && has_pagination?(res)
             options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
             data += self.all(nil,options,true)
           end
@@ -96,6 +96,10 @@ module Pipedrive
         else
           bad_response(res,attrs)
         end
+      end
+
+      def has_pagination?(res)
+        res['additional_data'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
       end
 
       def create( opts = {} )

@@ -1,0 +1,75 @@
+{
+	"success": true,
+	"data":
+	[
+		{
+			"id": 1,
+			"order_nr": 1,
+			"name": "Idea",
+			"active_flag": true,
+			"deal_probability": 100,
+			"pipeline_id": 1,
+			"rotten_flag": false,
+			"rotten_days": null,
+			"add_time": "2015-01-06 12:08:01",
+			"update_time": null,
+			"pipeline_name": "Pipeline"
+		},
+
+		{
+			"id": 2,
+			"order_nr": 2,
+			"name": "Contact Made",
+			"active_flag": true,
+			"deal_probability": 100,
+			"pipeline_id": 1,
+			"rotten_flag": false,
+			"rotten_days": null,
+			"add_time": "2015-01-06 12:08:01",
+			"update_time": null,
+			"pipeline_name": "Pipeline"
+		},
+
+		{
+			"id": 3,
+			"order_nr": 3,
+			"name": "Needs Discovered",
+			"active_flag": true,
+			"deal_probability": 100,
+			"pipeline_id": 1,
+			"rotten_flag": false,
+			"rotten_days": null,
+			"add_time": "2015-01-06 12:08:01",
+			"update_time": null,
+			"pipeline_name": "Pipeline"
+		},
+
+		{
+			"id": 4,
+			"order_nr": 4,
+			"name": "Proposal Presented",
+			"active_flag": true,
+			"deal_probability": 100,
+			"pipeline_id": 1,
+			"rotten_flag": false,
+			"rotten_days": null,
+			"add_time": "2015-01-06 12:08:01",
+			"update_time": null,
+			"pipeline_name": "Pipeline"
+		},
+
+    {
+			"id": 5,
+			"order_nr": 5,
+			"name": "In Negotiation",
+			"active_flag": true,
+			"deal_probability": 100,
+			"pipeline_id": 1,
+			"rotten_flag": false,
+			"rotten_days": null,
+			"add_time": "2015-01-06 12:08:01",
+			"update_time": null,
+			"pipeline_name": "Pipeline"
+		}
+	]
+}
