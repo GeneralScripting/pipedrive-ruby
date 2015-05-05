@@ -6,7 +6,7 @@ class TestPipedriveOrganization < Test::Unit::TestCase
   end
 
   should "execute a valid person request" do
-    stub_request(:post, "http://api.pipedrive.com/v1/organizations?api_token=some-token").
+    stub_request(:post, "https://api.pipedrive.com/v1/organizations?api_token=some-token").
       with(:body => {
           "name" => "Dope.org"
         },
