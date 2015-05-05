@@ -16,5 +16,6 @@ module Pipedrive
       end
 
     end
+
   end
 end

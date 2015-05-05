@@ -7,17 +7,17 @@ class TestPipedrivePerson < Test::Unit::TestCase
 
   should "execute a valid person request" do
     body = {
-      "email"=>["john@dope.org"],
-      "name"=>"John Dope",
-      "org_id"=>"404",
-      "phone"=>["0123456789"]
+      "email" => ["john@dope.org"],
+      "name" => "John Dope",
+      "org_id" => "404",
+      "phone" => ["0123456789"]
     }
 
-    stub_request(:post, "http://api.pipedrive.com/v1/persons?api_token=some-token").
+    stub_request(:post, "https://api.pipedrive.com/v1/persons?api_token=some-token").
       with(:body => body, :headers => {
-          'Accept'=>'application/json',
-          'Content-Type'=>'application/x-www-form-urlencoded',
-          'User-Agent'=>'Ruby.Pipedrive.Api'
+          'Accept' => 'application/json',
+          'Content-Type' => 'application/x-www-form-urlencoded',
+          'User-Agent' => 'Ruby.Pipedrive.Api'
         }).
       to_return(
         :status => 200,
