@@ -9,7 +9,7 @@ class TestPipedriveAuthentication < Test::Unit::TestCase
   should "send authentication token with each request" do
     Pipedrive.authenticate("some-token")
 
-    stub_request(:get, "http://api.pipedrive.com/v1/?api_token=some-token").
+    stub_request(:get, "https://api.pipedrive.com/v1/?api_token=some-token").
       with(:headers => {
         'Accept'=>'application/json',
         'Content-Type'=>'application/x-www-form-urlencoded',
