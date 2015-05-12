@@ -15,8 +15,8 @@ module Pipedrive
   class Base < OpenStruct
 
     include HTTParty
-    
-    base_uri 'api.pipedrive.com/v1'
+
+    base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
 
@@ -107,7 +107,7 @@ module Pipedrive
           bad_response(res,opts)
         end
       end
-      
+
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res,id)
