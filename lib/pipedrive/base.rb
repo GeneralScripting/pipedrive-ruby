@@ -15,7 +15,7 @@ module Pipedrive
   class Base < OpenStruct
 
     include HTTParty
-    
+
     base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
@@ -49,14 +49,22 @@ module Pipedrive
     #
     # @param [Hash] opts
     # @return [Boolean]
-    def update(opts = {})
+    def update(opts = {}, raise_error=false)
       res = put "#{resource_path}/#{id}", :body => opts
       if res.success?
         res['data'] = Hash[res['data'].map {|k, v| [k.to_sym, v] }]
         @table.merge!(res['data'])
       else
-        false
+        if raise_error
+          raise StandardError.new("update to #{resource_path}/#{id} failed with #{res.code} #{res.message} #{res.body}")
+        else
+          false
+        end
       end
+    end
+
+    def update!(opts = {})
+      update(opts, true)
     end
 
     class << self
@@ -107,7 +115,7 @@ module Pipedrive
           bad_response(res,opts)
         end
       end
-      
+
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res,id)
