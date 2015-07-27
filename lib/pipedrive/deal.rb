@@ -9,7 +9,7 @@ module Pipedrive
     def products
       Product.all(get "#{resource_path}/#{id}/products")
     end
-    
+
     def remove_product product_attachment_id
       res = delete "#{resource_path}/#{id}/products", { :body => { :product_attachment_id => product_attachment_id } }
       res.success? ? nil : bad_response(res,product_attachment_id)
@@ -26,6 +26,5 @@ module Pipedrive
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})
       Note.all( get("/notes", :query => opts.merge(:deal_id => id) ) )
     end
-    
   end
 end

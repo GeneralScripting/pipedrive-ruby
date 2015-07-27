@@ -126,6 +126,11 @@ module Pipedrive
         res.ok? ? new_list(res) : bad_response(res,{:name => name}.merge(opts))
       end
 
+      def find_with_options(opts = { start: 0 })
+        res = get "#{resource_path}", query: opts
+        res.ok? ? new_list(res) : bad_response(res,opts)
+      end
+
       def resource_path
         # The resource path should match the camelCased class name with the
         # first letter downcased.  Pipedrive API is sensitive to capitalisation
