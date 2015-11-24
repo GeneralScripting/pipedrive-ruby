@@ -26,6 +26,22 @@ module Pipedrive
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})
       Note.all( get("/notes", :query => opts.merge(:deal_id => id) ) )
     end
+
+    def self.filter_deals(filter_id)
+      res = get("#{resource_path}", :query => {:filter_id => filter_id})
+      # res.ok? ? new(res) : bad_response(res,{:filter_id => filter_id})
+
+      if res.ok?
+          data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
+          # if get_absolutely_all && res['additional_data']['pagination'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
+          #   options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
+          #   data += self.all(nil,options,true)
+          # end
+          data
+      else
+          bad_response(res,attrs)
+      end
+    end
     
   end
 end

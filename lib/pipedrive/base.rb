@@ -16,7 +16,7 @@ module Pipedrive
 
     include HTTParty
     
-    base_uri 'api.pipedrive.com/v1'
+    base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
 
@@ -73,11 +73,7 @@ module Pipedrive
       #
       # @param [HTTParty::Response] response
       def bad_response(response, params={})
-        puts params.inspect
-        if response.class == HTTParty::Response
-          raise HTTParty::ResponseError, response
-        end
-        raise StandardError, 'Unknown error'
+        response
       end
 
       def new_list( attrs )
@@ -92,9 +88,9 @@ module Pipedrive
             options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
             data += self.all(nil,options,true)
           end
-          data
+          {'success' => true, 'data' => data}
         else
-          bad_response(res,attrs)
+          bad_response(res)
         end
       end
 
