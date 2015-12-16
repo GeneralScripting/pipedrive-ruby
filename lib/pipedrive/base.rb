@@ -88,8 +88,13 @@ module Pipedrive
         res = response || get(resource_path, options)
         if res.ok?
           data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
-          if get_absolutely_all && res['additional_data']['pagination'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
-            options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
+          if get_absolutely_all && res['additional_data'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
+            if options[:query]
+              options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
+            else
+              options[:query] = {:start => res['additional_data']['pagination']['next_start']}
+            end
+
             data += self.all(nil,options,true)
           end
           data
@@ -107,7 +112,7 @@ module Pipedrive
           bad_response(res,opts)
         end
       end
-      
+
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res,id)
