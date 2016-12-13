@@ -1,4 +1,4 @@
-require 'pipedrive/base'
+require_relative 'pipedrive/base'
 require 'pipedrive/activity'
 require 'pipedrive/activity-type'
 require 'pipedrive/authorization'
@@ -30,5 +30,4 @@ module Pipedrive
   def self.authenticate(token)
     Base.authenticate(token)
   end
-
 end
