@@ -55,7 +55,7 @@ module Pipedrive
         res['data'] = Hash[res['data'].map {|k, v| [k.to_sym, v] }]
         @table.merge!(res['data'])
       else
-        false
+        Base.bad_response(res, opts)
       end
     end
 
