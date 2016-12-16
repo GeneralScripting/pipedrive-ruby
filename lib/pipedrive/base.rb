@@ -49,8 +49,9 @@ module Pipedrive
     #
     # @param [Hash] opts
     # @return [Boolean]
-    def update(opts = {})
-      res = put "#{resource_path}/#{id}", :body => opts
+    def update(opts = {}, custom_header = {})
+      res = put "#{resource_path}/#{id}", body: opts, headers: Base.default_options[:headers].merge(custom_header)
+      opts = JSON.parse(opts) unless opts.is_a?(Hash)
       if res.success?
         res['data'] = Hash[res['data'].map {|k, v| [k.to_sym, v] }]
         @table.merge!(res['data'])
