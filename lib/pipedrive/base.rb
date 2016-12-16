@@ -85,7 +85,7 @@ module Pipedrive
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
-      def all(response = nil, options={},get_absolutely_all=false)
+      def all(response = nil, options = { query: {} }, get_absolutely_all = true)
         res = response || get(resource_path, options)
         if res.ok?
           data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
