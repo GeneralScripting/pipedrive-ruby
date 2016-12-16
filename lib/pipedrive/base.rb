@@ -98,8 +98,9 @@ module Pipedrive
         end
       end
 
-      def create( opts = {} )
-        res = post resource_path, :body => opts
+      def create(opts = {}, custom_header = {})
+        res = post resource_path, body: opts, headers: default_options[:headers].merge(custom_header)
+        opts = JSON.parse(opts) unless opts.is_a?(Hash)
         if res.success?
           res['data'] = opts.merge res['data']
           new(res)
