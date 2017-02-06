@@ -1,4 +1,4 @@
-require 'pipedrive/base'
+require_relative 'pipedrive/base'
 require 'pipedrive/activity'
 require 'pipedrive/activity-type'
 require 'pipedrive/authorization'
@@ -14,7 +14,7 @@ require 'pipedrive/organization-field'
 require 'pipedrive/person-field'
 require 'pipedrive/permission-set'
 require 'pipedrive/pipeline'
-require 'pipedrive/product'
+require_relative 'pipedrive/product'
 require 'pipedrive/product-field'
 require 'pipedrive/role'
 require 'pipedrive/search-result'
@@ -30,5 +30,4 @@ module Pipedrive
   def self.authenticate(token)
     Base.authenticate(token)
   end
-
 end

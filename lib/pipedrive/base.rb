@@ -16,7 +16,7 @@ module Pipedrive
 
     include HTTParty
     
-    base_uri 'api.pipedrive.com/v1'
+    base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
 
@@ -49,13 +49,14 @@ module Pipedrive
     #
     # @param [Hash] opts
     # @return [Boolean]
-    def update(opts = {})
-      res = put "#{resource_path}/#{id}", :body => opts
+    def update(opts = {}, custom_header = {})
+      res = put "#{resource_path}/#{id}", body: opts, headers: Base.default_options[:headers].merge(custom_header)
+      opts = JSON.parse(opts) unless opts.is_a?(Hash)
       if res.success?
         res['data'] = Hash[res['data'].map {|k, v| [k.to_sym, v] }]
         @table.merge!(res['data'])
       else
-        false
+        Base.bad_response(res, opts)
       end
     end
 
@@ -84,22 +85,23 @@ module Pipedrive
         attrs['data'].is_a?(Array) ? attrs['data'].map {|data| self.new( 'data' => data ) } : []
       end
 
-      def all(response = nil, options={},get_absolutely_all=false)
+      def all(response = nil, options = { query: {} }, get_absolutely_all = true)
         res = response || get(resource_path, options)
         if res.ok?
           data = res['data'].nil? ? [] : res['data'].map{|obj| new(obj)}
-          if get_absolutely_all && res['additional_data']['pagination'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
+          if get_absolutely_all && res['additional_data'] && res['additional_data']['pagination'] && res['additional_data']['pagination']['more_items_in_collection']
             options[:query] = options[:query].merge({:start => res['additional_data']['pagination']['next_start']})
             data += self.all(nil,options,true)
           end
           data
         else
-          bad_response(res,attrs)
+          bad_response(res, options)
         end
       end
 
-      def create( opts = {} )
-        res = post resource_path, :body => opts
+      def create(opts = {}, custom_header = {})
+        res = post resource_path, body: opts, headers: default_options[:headers].merge(custom_header)
+        opts = JSON.parse(opts) unless opts.is_a?(Hash)
         if res.success?
           res['data'] = opts.merge res['data']
           new(res)
