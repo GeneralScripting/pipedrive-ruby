@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'bundler'
 
-require 'coveralls'
-Coveralls.wear!
-
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -11,7 +8,7 @@ rescue Bundler::BundlerError => e
   $stderr.puts "Run `bundle install` to install missing gems"
   exit e.status_code
 end
-require 'test/unit'
+
 require 'shoulda'
 # require 'mocha/setup'
 require 'webmock/test_unit'

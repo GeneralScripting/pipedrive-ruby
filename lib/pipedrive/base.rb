@@ -108,6 +108,11 @@ module Pipedrive
         end
       end
       
+      def search opts
+        res = get resource_path, query: opts
+        res.ok? ? new_list(res) : bad_response(res, opts)
+      end
+      
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res,id)
