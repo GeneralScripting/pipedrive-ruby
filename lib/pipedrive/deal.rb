@@ -16,7 +16,7 @@ module Pipedrive
     end
 
     def participants
-      Pipedrive::Participant.all(get "#{resource_path}/#{id}/participants")
+      Participant.all(get "#{resource_path}/#{id}/participants")
     end
     
     def remove_product product_attachment_id
