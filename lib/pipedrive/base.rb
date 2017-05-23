@@ -58,6 +58,14 @@ module Pipedrive
         false
       end
     end
+    
+    # Destroys the object
+    #
+    # @return [HTTParty::Response] response
+    def destroy
+      res = delete "#{resource_path}/#{id}"
+      res.ok? ? res : bad_response(res, id)
+    end
 
     class << self
       # Sets the authentication credentials in a class variable.
