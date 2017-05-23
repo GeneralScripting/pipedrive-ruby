@@ -123,9 +123,9 @@ module Pipedrive
         res.ok? ? new_list(res) : bad_response(res,{:name => name}.merge(opts))
       end
 
-      def destroy
+      def destroy(id)
          res = delete "#{resource_path}/#{id}"
-         res.ok? ? res : bad_response(res, attrs)
+         res.ok? ? res : bad_response(res, id)
       end
       
       def resource_path
