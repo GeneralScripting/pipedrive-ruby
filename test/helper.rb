@@ -9,7 +9,7 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-require 'shoulda'
+require "shoulda"
 # require 'mocha/setup'
 require 'webmock/test_unit'
 
@@ -18,4 +18,5 @@ $LOAD_PATH.unshift(File.dirname(__FILE__))
 require 'pipedrive-ruby'
 
 class Test::Unit::TestCase
+  include ShouldaContextLoadable
 end

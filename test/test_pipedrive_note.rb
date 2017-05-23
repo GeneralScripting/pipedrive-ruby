@@ -13,7 +13,7 @@ class TestPipedriveNote < Test::Unit::TestCase
       # deal_id
     }
 
-    stub_request(:post, "http://api.pipedrive.com/v1/notes?api_token=some-token").
+    stub_request(:post, "https://api.pipedrive.com/v1/notes?api_token=some-token").
       with(:body => body, :headers => {
           'Accept'=>'application/json',
           'Content-Type'=>'application/x-www-form-urlencoded',

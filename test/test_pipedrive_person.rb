@@ -13,7 +13,7 @@ class TestPipedrivePerson < Test::Unit::TestCase
       "phone"=>["0123456789"]
     }
 
-    stub_request(:post, "http://api.pipedrive.com/v1/persons?api_token=some-token").
+    stub_request(:post, "https://api.pipedrive.com/v1/persons?api_token=some-token").
       with(:body => body, :headers => {
           'Accept'=>'application/json',
           'Content-Type'=>'application/x-www-form-urlencoded',
