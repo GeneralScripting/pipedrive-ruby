@@ -38,11 +38,35 @@ module Pipedrive
         if attrs['additional_data']
           struct_attrs.merge!(attrs['additional_data'])
         end
+        if attrs['related_objects']
+          struct_attrs.merge!(initialize_related_objects(attrs['related_objects']))
+        end
       else
         struct_attrs = attrs
       end
 
       super(struct_attrs)
+    end
+    
+    # Create related objects from hash
+    #
+    # Only used internally
+    #
+    # @param [Hash] related_object_hash
+    # @return [Hash]
+    def initialize_related_objects related_object_hash
+      related_objects = Hash.new
+      # Create related objects if given
+      related_object_hash.each do |key, value|
+        # Check if the given class is defined for the related object
+        class_name = "Pipedrive::" + key.capitalize
+        if Object.const_defined?(class_name)
+          related_object = Object::const_get(class_name).new(value.values.shift)
+          related_objects[key] = related_object
+        end
+      end
+      
+      related_objects
     end
 
     # Updates the object.
