@@ -15,7 +15,8 @@ module Pipedrive
     # @params [Boolean] force_reload
     # @return [Organization]
     def organization force_reload=false
-      if self[:organization].nil? or force_reload
+      # Get Organization if id is set and if not already set
+      if not org_id.nil? and (self[:organization].nil? or force_reload)
         self[:organization] = Organization.find(org_id)
       end
       
