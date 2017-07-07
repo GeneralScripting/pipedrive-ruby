@@ -10,6 +10,15 @@ module Pipedrive
       Product.all(get "#{resource_path}/#{id}/products")
     end
     
+    def add_participant(opts = {})
+      res = post "#{resource_path}/#{id}/participants", :body => opts
+      res.success? ? res['data']['id'] : bad_response(res,opts)
+    end
+
+    def participants
+      Person.all(get "#{resource_path}/#{id}/participants")
+    end
+    
     def remove_product product_attachment_id
       res = delete "#{resource_path}/#{id}/products", { :body => { :product_attachment_id => product_attachment_id } }
       res.success? ? nil : bad_response(res,product_attachment_id)
@@ -21,6 +30,10 @@ module Pipedrive
 
     def files
       File.all(get "#{resource_path}/#{id}/files")
+    end
+    
+    def add_note content
+      Note.create(deal_id: id, content: content)
     end
 
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})

@@ -16,7 +16,7 @@ module Pipedrive
 
     include HTTParty
     
-    base_uri 'api.pipedrive.com/v1'
+    base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
 
@@ -38,11 +38,35 @@ module Pipedrive
         if attrs['additional_data']
           struct_attrs.merge!(attrs['additional_data'])
         end
+        if attrs['related_objects']
+          struct_attrs.merge!(initialize_related_objects(attrs['related_objects']))
+        end
       else
         struct_attrs = attrs
       end
 
       super(struct_attrs)
+    end
+    
+    # Create related objects from hash
+    #
+    # Only used internally
+    #
+    # @param [Hash] related_object_hash
+    # @return [Hash]
+    def initialize_related_objects related_object_hash
+      related_objects = Hash.new
+      # Create related objects if given
+      related_object_hash.each do |key, value|
+        # Check if the given class is defined for the related object
+        class_name = "Pipedrive::" + key.capitalize
+        if Object.const_defined?(class_name)
+          related_object = Object::const_get(class_name).new(value.values.shift)
+          related_objects[key] = related_object
+        end
+      end
+      
+      related_objects
     end
 
     # Updates the object.
@@ -57,6 +81,14 @@ module Pipedrive
       else
         false
       end
+    end
+    
+    # Destroys the object
+    #
+    # @return [HTTParty::Response] response
+    def destroy
+      res = delete "#{resource_path}/#{id}"
+      res.ok? ? res : bad_response(res, id)
     end
 
     class << self
@@ -108,6 +140,11 @@ module Pipedrive
         end
       end
       
+      def search opts
+        res = get resource_path, query: opts
+        res.ok? ? new_list(res) : bad_response(res, opts)
+      end
+      
       def find(id)
         res = get "#{resource_path}/#{id}"
         res.ok? ? new(res) : bad_response(res,id)
@@ -118,6 +155,11 @@ module Pipedrive
         res.ok? ? new_list(res) : bad_response(res,{:name => name}.merge(opts))
       end
 
+      def destroy(id)
+         res = delete "#{resource_path}/#{id}"
+         res.ok? ? res : bad_response(res, id)
+      end
+      
       def resource_path
         # The resource path should match the camelCased class name with the
         # first letter downcased.  Pipedrive API is sensitive to capitalisation
