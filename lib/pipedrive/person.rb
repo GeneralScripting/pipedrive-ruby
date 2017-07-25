@@ -12,5 +12,11 @@ module Pipedrive
     def deals()
       Deal.all(get "#{resource_path}/#{id}/deals", :everyone => 1)
     end
+
+    def merge(opts = {})
+      res = put "#{resource_path}/#{id}/merge", :body => opts
+      res.success? ? res['data'] : bad_response(res,opts)
+    end
+
   end
 end
