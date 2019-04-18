@@ -14,7 +14,7 @@ module Pipedrive
   class Base < OpenStruct
     include HTTParty
 
-    base_uri 'api.pipedrive.com/v1'
+    base_uri 'https://api.pipedrive.com/v1'
     headers HEADERS
     format :json
 
