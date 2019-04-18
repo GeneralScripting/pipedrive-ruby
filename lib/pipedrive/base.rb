@@ -100,7 +100,7 @@ module Pipedrive
       def create(opts = {})
         res = post resource_path, body: opts
         if res.success?
-          res['data'] = Hash[res['data'].map { |k, v| [k.to_sym, v] }]
+          res['data'] = opts.merge res['data']
           new(res)
         else
           bad_response(res, opts)
