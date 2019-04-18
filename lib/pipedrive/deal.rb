@@ -10,6 +10,11 @@ module Pipedrive
       Product.all(get "#{resource_path}/#{id}/products")
     end
 
+    def add_participant(person_id)
+      res = post "#{resource_path}/#{id}/participants", body: { person_id: person_id }
+      res.success? ? res['data'] : bad_response(res, opts)
+    end
+
     def participants
       Person.all(get "#{resource_path}/#{id}/participants")
     end
@@ -30,6 +35,5 @@ module Pipedrive
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})
       Note.all( get("/notes", :query => opts.merge(:deal_id => id) ) )
     end
-    
   end
 end
