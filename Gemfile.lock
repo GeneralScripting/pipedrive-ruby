@@ -33,7 +33,7 @@ GEM
       metaclass (~> 0.0.1)
     multi_json (1.6.1)
     multi_xml (0.5.3)
-    rake (10.0.3)
+    rake (13.0.1)
     rdoc (3.12.2)
       json (~> 1.4)
     rest-client (1.6.7)
