@@ -34,8 +34,7 @@ GEM
     multi_json (1.6.1)
     multi_xml (0.5.3)
     rake (10.0.3)
-    rdoc (3.12.2)
-      json (~> 1.4)
+    rdoc (6.3.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     safe_yaml (0.9.3)
@@ -65,7 +64,7 @@ DEPENDENCIES
   jeweler (>= 1.8.4)
   json (>= 1.7.7)
   multi_xml (>= 0.5.2)
-  rdoc (~> 3.12)
+  rdoc (~> 6.3)
   shoulda
   simplecov
   webmock
