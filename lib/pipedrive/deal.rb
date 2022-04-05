@@ -35,5 +35,16 @@ module Pipedrive
     def notes(opts = {:sort_by => 'add_time', :sort_mode => 'desc'})
       Note.all( get("/notes", :query => opts.merge(:deal_id => id) ) )
     end
+
+    class << self
+      def search(term, fields: [])
+        res = get("#{resource_path}/search", query: { term: term, fields: fields } )
+        if res.ok?
+          data = res['data'].nil? ? [] : res['data']['items'].map { |obj| new(obj['item']) }
+        else
+          bad_response(res, attrs)
+        end
+      end
+    end
   end
 end
