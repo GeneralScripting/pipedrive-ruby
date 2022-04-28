@@ -16,7 +16,8 @@ GEM
       thor
     crack (0.4.0)
       safe_yaml (~> 0.9.0)
-    git (1.2.5)
+    git (1.11.0)
+      rchardet (~> 1.8)
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -34,6 +35,7 @@ GEM
     multi_json (1.6.1)
     multi_xml (0.5.3)
     rake (10.0.3)
+    rchardet (1.8.0)
     rdoc (3.12.2)
       json (~> 1.4)
     rest-client (1.6.7)
